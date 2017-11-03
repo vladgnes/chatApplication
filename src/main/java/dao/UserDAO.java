@@ -14,9 +14,9 @@ public class UserDAO {
 
     private Session session;
 
-    UserDAO() {this.session = HibernateUtil.getSessionFactory().openSession();}
+    public UserDAO() {this.session = HibernateUtil.getSessionFactory().openSession();}
 
-    User login(String login, String password) {
+    public User login(String login, String password) {
         try {
             String loginRequest = "FROM User AS User WHERE User.login =:login " +
                     "AND User.password =:password";
@@ -29,7 +29,7 @@ public class UserDAO {
         }
     }
 
-    boolean signUp(String login, String password, String firstName, String lastName) {
+    public boolean signUp(String login, String password, String firstName, String lastName) {
         if(!ifUserExists(login))
         {
             Transaction txn = session.beginTransaction();
